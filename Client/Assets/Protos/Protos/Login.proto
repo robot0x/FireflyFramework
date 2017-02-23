@@ -1,0 +1,12 @@
+message LoginReq
+{
+	required string account = 1;
+	required string password = 2;
+}
+
+message LoginRes
+{
+	required bool result = 1;
+	optional bool hasRole = 2;
+	optional string userId = 3;
+}
