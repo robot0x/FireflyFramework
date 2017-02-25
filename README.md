@@ -19,7 +19,7 @@
 # Login.proto
 message LoginReq
 {
-	required string account = 1;
+	required string username = 1;
 	required string password = 2;
 }
 message LoginRes
@@ -141,9 +141,9 @@ gtwisted ---- core ---- protocols ---- ClientFactory ---- \_\_init\_\_ ---- p.jo
 5、可实现实时热更新数据以及游戏逻辑，客户端玩家无感觉；  
 6、有几十个基础游戏玩法系统模块提供组装使用。  
 
-> * `详细技术介绍`
-> `master管理节点`：这是用来管理所有节点的节点，如可通过http来关闭所有节点(可回调节点注册的关闭方法)，其实master节点也可以理解为是分布式root节点，其它节点都是remote节点
-> `net前端节点`：net节点是client端连接节点，负责数据包的结束，解包，封包，发送。net节点也是gate节点的分布式节点，由于游戏中流量较大，所以一般net节点只负责解包，封包，然后将解包后的数据转发给gate分布式根节点，处理完毕后再有net节点将处理结果发给client
-> `gate分布式根节点`：net节点将解包的数据发给gate节点后，gate节点可以自己处理数据返回结果，也可以调用remote子节点处理数据
-> `remote子节点`：一般remote子节点都是真正干活的节点
-> `dbfront节点`：这个节点一般是负责管理memcache和数据库交互的节点
+> * `详细技术介绍`  
+> `master管理节点`：这是用来管理所有节点的节点，如可通过http来关闭所有节点(可回调节点注册的关闭方法)，其实master节点也可以理解为是分布式root节点，其它节点都是remote节点  
+> `net前端节点`：net节点是client端连接节点，负责数据包的结束，解包，封包，发送。net节点也是gate节点的分布式节点，由于游戏中流量较大，所以一般net节点只负责解包，封包，然后将解包后的数据转发给gate分布式根节点，处理完毕后再有net节点将处理结果发给client  
+> `gate分布式根节点`：net节点将解包的数据发给gate节点后，gate节点可以自己处理数据返回结果，也可以调用remote子节点处理数据  
+> `remote子节点`：一般remote子节点都是真正干活的节点  
+> `dbfront节点`：这个节点一般是负责管理memcache和数据库交互的节点  
