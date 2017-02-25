@@ -5,7 +5,7 @@ public class TestNetwork : MonoBehaviour
 {
     void Start()
     {
-        LoginReq model1 = new LoginReq() { account = "maomao", password = "boy" };
+        LoginReq model1 = new LoginReq() { username = "maomao", password = "boy" };
 
         // 序列化
         byte[] req = Util.Serialize(model1);
@@ -26,7 +26,7 @@ public class TestNetwork : MonoBehaviour
 
         // 查看结果
         Debug.Log("commandId : " + res.body.commandId);
-        Debug.Log("account : " + model2.account);
+        Debug.Log("username : " + model2.username);
         Debug.Log("password : " + model2.password);
     }
 }

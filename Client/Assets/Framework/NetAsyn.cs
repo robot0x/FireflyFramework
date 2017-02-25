@@ -72,7 +72,7 @@ public class NetAsyn : NetBase
             // 结束异步消息读取并获取消息长度
             int count = socket.EndReceive(async);
             byte[] buff = new byte[count];
-            // 复制缓冲池
+            // 复制缓冲区
             Buffer.BlockCopy(recvBuf, 0, buff, 0, count);
             // 复制到数据缓冲区
             buffer.AddRange(buff);
@@ -159,9 +159,9 @@ public class NetAsyn : NetBase
     }
 
     // 发送消息
-    public override void Send(byte[] buffer)
+    public override void Send(byte[] data)
     {
-        socket.Send(buffer);
+        socket.Send(data);
     }
 
     // 获取消息

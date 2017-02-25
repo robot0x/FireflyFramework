@@ -209,13 +209,13 @@ public class NetThread : NetBase
     }
 
     // 发送消息
-    public override void Send(byte[] buffer)
+    public override void Send(byte[] data)
     {
-        if (buffer != null)
+        if (data != null)
         {
             // 上锁，阻塞
             Monitor.Enter(m_SendBuff);
-            m_SendBuff.Enqueue(buffer);
+            m_SendBuff.Enqueue(data);
             Monitor.Exit(m_SendBuff);
         }
     }

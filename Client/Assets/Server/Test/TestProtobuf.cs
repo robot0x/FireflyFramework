@@ -5,7 +5,7 @@ public class TestProtobuf : MonoBehaviour
 {
     void Start()
     {
-        LoginReq model = new LoginReq() { account = "maomao", password = "boy" };
+        LoginReq model = new LoginReq() { username = "maomao", password = "boy" };
 
         // 序列化
         byte[] req = Util.Serialize(model);
@@ -15,7 +15,7 @@ public class TestProtobuf : MonoBehaviour
         LoginReq res = Util.Deserialize<LoginReq>(req);
 
         // 查看结果
-        Debug.Log("account : " + res.account);
+        Debug.Log("username : " + res.username);
         Debug.Log("password : " + res.password);
     }
 }

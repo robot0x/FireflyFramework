@@ -1,25 +1,18 @@
-﻿using Protos.CreateRole;
-using Protos.Login;
+﻿using Protos.Login;
 using Protos.Register;
 // using UnityEngine;
 
 public class SocketManager : Singleton<SocketManager>
 {
-    public void SendMsg_Login(string account, string password)
+    public void SendMsg_Login(string username, string password)
     {
-        LoginReq req = new LoginReq() { account = account, password = Util.Md5Sum(password) };
+        LoginReq req = new LoginReq() { username = username, password = Util.Md5Sum(password) };
         Globals.Instance.SendMsg<LoginReq>(Consts_CommandId.C2S_Login, req);
     }
 
-    public void SendMsg_Register(string account, string password)
+    public void SendMsg_Register(string username, string password)
     {
-        RegisterReq req = new RegisterReq() { account = account, password = Util.Md5Sum(password) };
+        RegisterReq req = new RegisterReq() { username = username, password = Util.Md5Sum(password) };
         Globals.Instance.SendMsg<RegisterReq>(Consts_CommandId.C2S_Register, req);
-    }
-
-    public void SendMsg_CreateRole(string username, string profession)
-    {
-        CreateRoleReq req = new CreateRoleReq() { username = username, profession = profession };
-        Globals.Instance.SendMsg<CreateRoleReq>(Consts_CommandId.C2S_CreateRole, req);
     }
 }

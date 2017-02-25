@@ -42,7 +42,7 @@ public abstract class NetBase
     public abstract void ReConnect();
 
     // 发送消息
-    public abstract void Send(byte[] buffer);
+    public abstract void Send(byte[] data);
 
     // 获取消息
     public abstract MessageData Loop();

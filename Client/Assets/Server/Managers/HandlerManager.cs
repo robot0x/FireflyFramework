@@ -15,7 +15,6 @@ public class HandlerManager : MonoBehaviour
         Register(new ConnectHandler());  // 1000
         Register(new LoginHandler());  // 1001
         Register(new RegisterHandler());  // 1002
-        Register(new CreateRoleHandler());  // 1003
     }
 
     private void Register(IHandler handler)

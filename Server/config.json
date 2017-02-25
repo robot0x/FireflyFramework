@@ -1,0 +1,6 @@
+{
+"master":{"roothost":"localhost","rootport":9999,"webport":9998},
+"servers":{
+"net":{"netport":9981,"name":"net","app":"app.server"}
+}
+}

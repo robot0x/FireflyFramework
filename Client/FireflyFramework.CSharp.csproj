@@ -85,12 +85,10 @@
     <Compile Include="Assets\Framework\NetAsyn.cs" />
     <Compile Include="Assets\Framework\NetBase.cs" />
     <Compile Include="Assets\Framework\NetThread.cs" />
-    <Compile Include="Assets\Protos\Protos\CreateRole.cs" />
     <Compile Include="Assets\Protos\Protos\Login.cs" />
     <Compile Include="Assets\Protos\Protos\Register.cs" />
     <Compile Include="Assets\Server\Globals.cs" />
     <Compile Include="Assets\Server\Handlers\ConnectHandler.cs" />
-    <Compile Include="Assets\Server\Handlers\CreateRoleHandler.cs" />
     <Compile Include="Assets\Server\Handlers\IHandler.cs" />
     <Compile Include="Assets\Server\Handlers\LoginHandler.cs" />
     <Compile Include="Assets\Server\Handlers\RegisterHandler.cs" />

@@ -13,7 +13,7 @@ from google.protobuf import descriptor_pb2
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='Login.proto',
   package='',
-  serialized_pb='\n\x0bLogin.proto\"-\n\x08LoginReq\x12\x0f\n\x07\x61\x63\x63ount\x18\x01 \x02(\t\x12\x10\n\x08password\x18\x02 \x02(\t\";\n\x08LoginRes\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07hasRole\x18\x02 \x01(\x08\x12\x0e\n\x06userId\x18\x03 \x01(\t')
+  serialized_pb='\n\x0bLogin.proto\".\n\x08LoginReq\x12\x10\n\x08username\x18\x01 \x02(\t\x12\x10\n\x08password\x18\x02 \x02(\t\";\n\x08LoginRes\x12\x0e\n\x06result\x18\x01 \x02(\x08\x12\x0f\n\x07hasRole\x18\x02 \x01(\x08\x12\x0e\n\x06userId\x18\x03 \x01(\t')
 
 
 
@@ -26,7 +26,7 @@ _LOGINREQ = _descriptor.Descriptor(
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='account', full_name='LoginReq.account', index=0,
+      name='username', full_name='LoginReq.username', index=0,
       number=1, type=9, cpp_type=9, label=2,
       has_default_value=False, default_value=unicode("", "utf-8"),
       message_type=None, enum_type=None, containing_type=None,
@@ -49,7 +49,7 @@ _LOGINREQ = _descriptor.Descriptor(
   is_extendable=False,
   extension_ranges=[],
   serialized_start=15,
-  serialized_end=60,
+  serialized_end=61,
 )
 
 
@@ -90,8 +90,8 @@ _LOGINRES = _descriptor.Descriptor(
   options=None,
   is_extendable=False,
   extension_ranges=[],
-  serialized_start=62,
-  serialized_end=121,
+  serialized_start=63,
+  serialized_end=122,
 )
 
 DESCRIPTOR.message_types_by_name['LoginReq'] = _LOGINREQ

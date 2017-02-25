@@ -12,9 +12,9 @@ public class Main : MonoBehaviour
     public Button confirmBtn_Register;
     public Button cancelBtn_Login;
     public Button cancelBtn_Register;
-    public InputField accountInput_Login;
+    public InputField usernameInput_Login;
     public InputField passwordInput_Login;
-    public InputField accountInput_Register;
+    public InputField usernameInput_Register;
     public InputField passwordInput_Register;
     public InputField password2Input_Register;
     public GameObject loginPanel;
@@ -56,9 +56,9 @@ public class Main : MonoBehaviour
 
     void OnLoginConfirmBtnClick()
     {
-        string account = accountInput_Login.text;
+        string username = usernameInput_Login.text;
         string password = passwordInput_Login.text;
-        if (account.Length < 3 || account.Length > 10
+        if (username.Length < 3 || username.Length > 10
             || password.Length < 3 || password.Length > 10)
         {
             Debug.Log("账号密码不合法!!!");
@@ -66,7 +66,7 @@ public class Main : MonoBehaviour
         else
         {
             // ----------登录请求----------
-            SocketManager.Instance.SendMsg_Login(account, password);
+            SocketManager.Instance.SendMsg_Login(username, password);
 
             // ----------网络测试----------
             /*
@@ -81,28 +81,28 @@ public class Main : MonoBehaviour
 
     IEnumerator Test(int i)
     {
-        string account = i + "";
+        string username = i + "";
         string password = i + "";
-        SocketManager.Instance.SendMsg_Login(account, password);
+        SocketManager.Instance.SendMsg_Login(username, password);
         yield return new WaitForSeconds(.005f);
     }
 
     void OnRegisterConfirmBtnClick()
     {
-        string account = accountInput_Register.text;
+        string username = usernameInput_Register.text;
         string password = passwordInput_Register.text;
-        string password2 = passwordInput_Register.text;
-        if (account.Length < 3 || account.Length > 10
+        string password2 = password2Input_Register.text;
+        if (username.Length < 3 || username.Length > 10
             || password.Length < 3 || password.Length > 10
             || password2.Length < 3 || password2.Length > 10
-            || password.Equals(password2) )
+            || !password.Equals(password2) )
         {
             Debug.Log("账号密码不合法!!!");
         }
         else
         {
             // ----------注册请求----------
-            SocketManager.Instance.SendMsg_Register(account, password);
+            SocketManager.Instance.SendMsg_Register(username, password);
         }
         ClearInfo();
     }
@@ -121,9 +121,9 @@ public class Main : MonoBehaviour
 
     void ClearInfo()
     {
-        accountInput_Login.text = "";
+        usernameInput_Login.text = "";
         passwordInput_Login.text = "";
-        accountInput_Register.text = "";
+        usernameInput_Register.text = "";
         passwordInput_Register.text = "";
         password2Input_Register.text = "";
     }

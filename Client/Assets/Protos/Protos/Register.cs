@@ -15,12 +15,12 @@ namespace Protos.Register
   {
     public RegisterReq() {}
     
-    private string _account;
-    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"account", DataFormat = global::ProtoBuf.DataFormat.Default)]
-    public string account
+    private string _username;
+    [global::ProtoBuf.ProtoMember(1, IsRequired = true, Name=@"username", DataFormat = global::ProtoBuf.DataFormat.Default)]
+    public string username
     {
-      get { return _account; }
-      set { _account = value; }
+      get { return _username; }
+      set { _username = value; }
     }
     private string _password;
     [global::ProtoBuf.ProtoMember(2, IsRequired = true, Name=@"password", DataFormat = global::ProtoBuf.DataFormat.Default)]

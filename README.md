@@ -44,12 +44,10 @@ message LoginRes
 > * 客户端到服务端：C2S_XXXX  
 1001 C2S_Login  
 1002 C2S_Register  
-1003 C2S_CreateRole  
 ...  
 > * 服务端到客户端：S2C_XXXX  
 1001 S2C_Login  
 1002 S2C_Register  
-1003 S2C_CreateRole  
 ...  
 
 ## 客户端 Unity
@@ -103,7 +101,6 @@ public void SendMsg<T>(int commandId, T data) 发送消息
 全局单例，封装了所有消息转发函数，外界只需要调用这个类的函数即可与服务端通讯  
 public void SendMsg_Login(string account, string password)  
 public void SendMsg_Register(string account, string password)  
-public void SendMsg_CreateRole(string username, string profession)  
 
 ### Handlers类
 > * `IHandler` handler接口
@@ -119,7 +116,6 @@ public interface IHandler
 > * ConnectHandler
 > * LoginHandler
 > * RegisterHandler
-> * CreateRoleHandler
 
 ### Utils类
 > * `Consts`  C2S常量、S2C常量
@@ -146,8 +142,8 @@ gtwisted ---- core ---- protocols ---- ClientFactory ---- \_\_init\_\_ ---- p.jo
 6、有几十个基础游戏玩法系统模块提供组装使用。  
 
 > * `详细技术介绍`
-1. master管理节点  这是用来管理所有节点的节点，如可通过http来关闭所有节点(可回调节点注册的关闭方法)，其实master节点也可以理解为是分布式root节点，其它节点都是remote节点  
-2. net前端节点   net节点是client端连接节点，负责数据包的结束，解包，封包，发送。net节点也是gate节点的分布式节点，由于游戏中流量较大，所以一般net节点只负责解包，封包，然后将解包后的数据转发给gate分布式根节点，处理完毕后再有net节点将处理结果发给client  
-3. gate分布式根节点  net节点将解包的数据发给gate节点后，gate节点可以自己处理数据返回结果，也可以调用remote子节点处理数据  
-4. remote子节点  一般remote子节点都是真正干活的节点  
-5. dbfront节点   这个节点一般是负责管理memcache和数据库交互的节点  
+> `master管理节点`：这是用来管理所有节点的节点，如可通过http来关闭所有节点(可回调节点注册的关闭方法)，其实master节点也可以理解为是分布式root节点，其它节点都是remote节点
+> `net前端节点`：net节点是client端连接节点，负责数据包的结束，解包，封包，发送。net节点也是gate节点的分布式节点，由于游戏中流量较大，所以一般net节点只负责解包，封包，然后将解包后的数据转发给gate分布式根节点，处理完毕后再有net节点将处理结果发给client
+> `gate分布式根节点`：net节点将解包的数据发给gate节点后，gate节点可以自己处理数据返回结果，也可以调用remote子节点处理数据
+> `remote子节点`：一般remote子节点都是真正干活的节点
+> `dbfront节点`：这个节点一般是负责管理memcache和数据库交互的节点

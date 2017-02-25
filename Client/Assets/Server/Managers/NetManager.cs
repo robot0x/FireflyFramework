@@ -134,11 +134,11 @@ public class NetManager : MonoBehaviour
     }
 
     // 发送消息
-    public void Send(byte[] buffer)
+    public void Send(byte[] data)
     {
-        if (buffer != null && Connected)
+        if (data != null && Connected)
         {
-            m_Client.Send(buffer);
+            m_Client.Send(data);
         }
     }
 

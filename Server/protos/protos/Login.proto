@@ -1,6 +1,6 @@
 message LoginReq
 {
-	required string account = 1;
+	required string username = 1;
 	required string password = 2;
 }
 

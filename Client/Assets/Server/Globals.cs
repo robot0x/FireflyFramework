@@ -26,7 +26,11 @@ public class Globals : UnitySingleton<Globals>
 
         // 加载管理类
         _Load();
+    }
 
+    // 开始时
+    void Start()
+    {
         // ----------发起连接----------
         Connect(null);
     }

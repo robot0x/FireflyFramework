@@ -7,11 +7,10 @@
 
 from gfirefly.server.globalobject import netserviceHandle
 from gfirefly.server.globalobject import GlobalObject
-
-from protos.protos.CreateRole_pb2 import CreateRoleRes, CreateRoleReq
 from protos.protos.Login_pb2 import LoginRes, LoginReq
 from protos.protos.Register_pb2 import RegisterRes, RegisterReq
 
+from firefly.dbentrust.mmode import MAdmin
 
 def doConnectionMade(conn):
     """当连接建立时调用的方法"""
@@ -30,7 +29,7 @@ GlobalObject().netfactory.doConnectionLost = doConnectionLost
 
 
 @netserviceHandle
-def test_1000(_conn, data):
+def connect_1000(_conn, data):
     """测试"""
     print 'ParseFromString :', data
 
@@ -53,7 +52,7 @@ def login_1001(_conn, data):
     model = LoginRes()
     model.result = True
     model.hasRole = True
-    model.userId = res.account
+    model.userId = res.username
 
     # 序列化
     req = model.SerializeToString()
@@ -81,24 +80,3 @@ def register_1002(_conn, data):
 
     # 发送消息
     GlobalObject().netfactory.pushObject(1002, req, [_conn.transport.sessionno])
-
-
-@netserviceHandle
-def createRole_1003(_conn, data):
-    """用户创建角色的方法"""
-    # 反序列化
-    res = CreateRoleReq()
-    res.ParseFromString(data)
-    print 'ParseFromString :', res
-
-    # 实例化
-    model = CreateRoleRes()
-    model.result = True
-    model.userId = '123456'
-
-    # 序列化
-    req = model.SerializeToString()
-    print 'SerializeToString :', req
-
-    # 发送消息
-    GlobalObject().netfactory.pushObject(1003, req, [_conn.transport.sessionno])
